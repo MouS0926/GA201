@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<button onclick="toggleCamera()">switch</button>
+<div id="webcam-container"></div>
+</body>
+
+<script>
+
+let usingExternalCamera = false;
+let videoElement;
+
+async function toggleCamera() {
+    // console.log(1);
+    if (videoElement) {
+        videoElement.srcObject.getTracks().forEach(track => track.stop());
+        usingExternalCamera = !usingExternalCamera;
+    }
+
+    const constraints = {
+        video: {
+            facingMode: usingExternalCamera ? 'environment' : 'user'
+        }
+    };
+
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia(constraints);
+        if (videoElement) {
+            videoElement.srcObject = stream;
+        }
+    } catch (error) {
+        console.error('Error accessing the camera:', error);
+    }
+}
+
+// Initialize the webcam on page load
+document.addEventListener('DOMContentLoaded', () => {
+    videoElement = document.createElement('video');
+    document.getElementById('webcam-container').appendChild(videoElement);
+    toggleCamera(); // Initialize with the default camera source
+    videoElement.play();
+});
+
+</script>
+
+</html>

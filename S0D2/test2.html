@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teachable Machine with Camera Selection</title>
+</head>
+<body>
+    <div>Teachable Machine Image Model</div>
+    <div>
+        <select id="camera-select"></select>
+    </div>
+    <button type="button" onclick="init()">Start</button>
+    <div id="webcam-container"></div>
+    <div id="label-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script type="text/javascript">
+        // Replace the URL with your own Teachable Machine model URL
+        const URL = "https://teachablemachine.withgoogle.com/models/p7BOFRYYl/";
+
+        let model, webcam, labelContainer, maxPredictions;
+
+        async function init() {
+            const cameraSelect = document.getElementById('camera-select');
+            const selectedDeviceId = cameraSelect.value;
+
+            const constraints = {
+                video: {
+                    deviceId: { exact: selectedDeviceId },
+                },
+            };
+
+            try {
+                if (webcam) {
+                    await webcam.stop(); // Stop the previous webcam, if any
+                }
+
+                const modelURL = URL + "model.json";
+                const metadataURL = URL + "metadata.json";
+
+                model = await tmImage.load(modelURL, metadataURL);
+                maxPredictions = model.getTotalClasses();
+
+                // Setup the webcam with the selected camera
+                webcam = new tmImage.Webcam(200, 200, true);
+                await webcam.setup(constraints);
+                await webcam.play();
+
+                document.getElementById("webcam-container").innerHTML = '';
+                document.getElementById("webcam-container").appendChild(webcam.canvas);
+
+                labelContainer = document.getElementById("label-container");
+                for (let i = 0; i < maxPredictions; i++) {
+                    labelContainer.appendChild(document.createElement("div"));
+                }
+
+                window.requestAnimationFrame(loop);
+            } catch (error) {
+                console.error('Error accessing the camera:', error);
+            }
+        }
+
+        async function loop() {
+            webcam.update(); // Update the webcam frame
+            await predict();
+            window.requestAnimationFrame(loop);
+        }
+
+        async function predict() {
+            const prediction = await model.predict(webcam.canvas);
+            for (let i = 0; i < maxPredictions; i++) {
+                const classPrediction =
+                    prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+                labelContainer.childNodes[i].innerHTML = classPrediction;
+            }
+        }
+    </script>
+
+    <script>
+        const cameraSelect = document.getElementById('camera-select');
+        navigator.mediaDevices.enumerateDevices()
+            .then(function (devices) {
+                devices.forEach(function (device) {
+                    if (device.kind === 'videoinput') {
+                        const option = document.createElement('option');
+                        option.value = device.deviceId;
+                        option.text = device.label || `Camera ${cameraSelect.length + 1}`;
+                        cameraSelect.appendChild(option);
+                    }
+                });
+            })
+            .catch(function (error) {
+                console.error('Error enumerating devices:', error);
+            });
+    </script>
+</body>
+</html>

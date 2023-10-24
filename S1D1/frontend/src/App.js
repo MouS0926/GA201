@@ -1,11 +1,11 @@
-import Quote from './Component/Quote';
 import logo from './logo.svg';
 import './App.css';
+import Summarizer from './component/Summarizer';
 
 function App() {
   return (
-    <div className="App">
-      <Quote/>
+    <div className="">
+  <Summarizer/>
     </div>
   );
 }
