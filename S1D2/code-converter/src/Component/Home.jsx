@@ -32,7 +32,7 @@ export default function Home() {
 
 const handleConverter=()=>{
     setLoadingConvert(true)
-    axios.post("http://localhost:8080/convert",{code,targetedlanguage:tolanguage})
+    axios.post("https://convert-debugger-checker-api.onrender.com/convert",{code,targetedlanguage:tolanguage})
     .then((res)=>{
         setLoadingConvert(false)
         console.log(res.data);
@@ -48,7 +48,7 @@ const handleConverter=()=>{
 
 const handleDebugger=()=>{
     setLoadingDebugger(true)
-    axios.post("http://localhost:8080/debugger",{code})
+    axios.post("https://convert-debugger-checker-api.onrender.com/debugger",{code})
     .then((res)=>{
         setLoadingDebugger(false)
         console.log(res.data);
@@ -60,10 +60,10 @@ const handleDebugger=()=>{
         console.log(err);
     })
 }
-
+//http://localhost:8080/quality
 const handleQaulityCheck=()=>{
     setLoadingChecker(true)
-    axios.post("http://localhost:8080/quality",{code})
+    axios.post("https://convert-debugger-checker-api.onrender.com/quality",{code})
     .then((res)=>{
         setLoadingChecker(false)
         console.log(res.data);
@@ -78,7 +78,7 @@ const handleQaulityCheck=()=>{
 
   return (
     <Container maxW='' bg='#07041b' color='grey' p={4}>
-      <HStack spacing="24px" p={3}>
+      <HStack spacing={['4', '24px']} flexWrap="wrap" p={3} direction={['column', 'row']}>
         <Select
           placeholder="From Language"
           width="25%"
@@ -118,8 +118,8 @@ const handleQaulityCheck=()=>{
         >Quality Checker</Button>
       </HStack>
 
-      <Flex justify="space-between" p={3}>
-        <Box bg="black" width="50%" p={4} color="white">
+      <Flex justify="space-between" p={3} direction={['column', 'row']}>
+        <Box bg="black" width={['100%', '50%']} p={4} color="white">
           <AceEditor
             mode={fromlanguage}
             theme="monokai"
@@ -131,7 +131,7 @@ const handleQaulityCheck=()=>{
             height="600px"
           />
         </Box>
-            <Box bg="black" width="50%" p={4} color="white">
+            <Box bg="black" width={['100%', '50%']} p={4} color="white">
 
             <Box bg="#2e2e2e" width="100%" p={1} color="white" height="100%" overflow="auto">
             <pre style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word', maxWidth: '100%', overflowWrap: 'break-word'}}>
