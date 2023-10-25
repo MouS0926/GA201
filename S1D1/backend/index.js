@@ -7,7 +7,6 @@ require("dotenv").config()
 const app=express()
 
 
-// Replace 'YOUR_OPENAI_API_KEY' with your actual OpenAI GPT-3 API key
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });

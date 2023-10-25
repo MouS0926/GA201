@@ -62,6 +62,8 @@ export default function Quote() {
           >
             Generate
           </Button>
+
+          
           {quote && (
             <Box mt={4}>
               <Text fontSize="lg" fontWeight="bold">
