@@ -1,4 +1,4 @@
-import { Box, Button, Container, Flex, HStack, Select } from '@chakra-ui/react';
+import { Box, Button, Container, Flex, HStack, Heading, Select } from '@chakra-ui/react';
 import axios from "axios"
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-javascript';
@@ -78,6 +78,9 @@ const handleQaulityCheck=()=>{
 
   return (
     <Container maxW='' bg='#07041b' color='grey' p={4}>
+        <Heading as='h3' size='lg' color="white" bg="#3acbb7" textAlign="Center" p={1}>
+        CodeWiz
+  </Heading>
       <HStack spacing={['4', '24px']} flexWrap="wrap" p={3} direction={['column', 'row']}>
         <Select
           placeholder="From Language"
