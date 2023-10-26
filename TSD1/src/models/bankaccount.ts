@@ -24,12 +24,15 @@ private transactions:Transaction[]
         if(amount > 0)
         {
             this.balance += amount
-            this.transactions.push({
-               type:'deposit',
-               amount:amount,
-               timestamp:new Date()
-            })
-            console.log(`Deposited ${amount},New Balance:${this.balance}`);
+
+            const currentTransaction={
+                type:'withdrawal',
+                amount:amount,
+                timestamp:new Date()
+            }
+
+            this.transactions.push(currentTransaction)
+            console.log(`Deposited ${amount} at ${currentTransaction.timestamp},New Balance:${this.balance}`);
             
         }
         else{
@@ -45,13 +48,15 @@ private transactions:Transaction[]
             if(this.balance>=amount)
             {
                 this.balance-=amount
-                this.transactions.push({
+                const currentTransaction={
                     type:'withdrawal',
                     amount:amount,
                     timestamp:new Date()
-                 })
+                }
 
-                 console.log(`Withdrawn ${amount},New Balance:${this.balance}`);
+                this.transactions.push(currentTransaction)
+
+                 console.log(`Withdrawn ${amount} at ${currentTransaction.timestamp},New Balance:${this.balance}`);
             }
             else{
                 console.log(`insufficient balance`);
@@ -64,6 +69,8 @@ private transactions:Transaction[]
     }
     getBalance(){
         return this.balance
+       
+        
     }
 
 }
