@@ -7,6 +7,7 @@ import { Task } from './task.model';
 export class TaskService {
 
   tasks:Task[]=[]
+nextId: number = 1;
   constructor() { }
 
   getTask():Task[]{
@@ -14,7 +15,7 @@ export class TaskService {
   }
 
   addTask(task:Task):void{
-   task.id=this.generateUniqueId()
+    task.id = this.nextId++
     this.tasks.push(task)
   }
 
@@ -25,17 +26,19 @@ export class TaskService {
     }
   }
 
-  deleteTask(taskId: string): void {
-    this.tasks = this.tasks.filter((el) => el.id !== taskId);
-  }
+  // deleteTask(taskId: number): void{
+  //   this.tasks = this.tasks.filter((el) => el.id != taskId);
+    
+  // }
   
 
-  private generateUniqueId(): string {
-    const min = 1000;
-    const max = 9999;
-    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-    let uniqueId="TDID"+randomNumber
-    return uniqueId;
+  deleteTask(taskId: number): void {
+    const index = this.tasks.findIndex((task) => task.id === taskId);
+    if (index !== -1) {
+      this.tasks.splice(index, 1);
+    }
   }
+  
+ 
 
 }

@@ -1,0 +1,42 @@
+/* counter.component.css */
+div{
+    width:50%;
+    margin: 0 auto;
+    background-color: rgb(245, 245, 245);
+    border: 1px solid #bdd9f7c3;
+    padding: 10px;
+    text-align: center;
+}
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .inc-btn,.dec-btn {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  .dec-btn{
+    background-color: #ba2121;
+  }
+  .dec-btn:hover{
+    background-color: #590808;
+  }
+  .inc-btn:hover{
+    background-color: #08488d;
+  }
+  
+  

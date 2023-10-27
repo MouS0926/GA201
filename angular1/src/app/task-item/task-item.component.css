@@ -1,0 +1,52 @@
+/* task-item.component.css */
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    background-color: #fff;
+    justify-content: space-between;
+  }
+  
+  .checkbox {
+    margin-right: 10px;
+  }
+  
+  .task-details {
+    flex-grow: 1;
+  }
+  
+  .edit-button ,.update-button,.cancel-button{
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  .update-button{
+    background-color: #f5753e;
+  }
+
+  .cancel-button{
+    background-color: #1a0f65;
+  }
+  
+  .delete-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+
+  .delete-button:hover {
+    background-color: #560f16;
+  }
+  .edit-button:hover {
+    background-color: #0e4b8c;
+  }
+  

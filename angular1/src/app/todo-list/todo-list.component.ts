@@ -12,9 +12,13 @@ export class TodoListComponent implements OnInit {
  
   
   constructor(private taskService: TaskService){
-
+    
   }
   ngOnInit() {
     this.tasks = this.taskService.getTask();
+    console.log(this.tasks);
+    
   }
+  
+  
 }
