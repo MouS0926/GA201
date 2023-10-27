@@ -1,0 +1,10 @@
+<!-- todo-form.component.html -->
+<div>
+    <h1>ToDo App</h1>
+    <form (ngSubmit)="addTodo()">
+      <input type="text" placeholder="enter title...." [(ngModel)]="title">
+      <input type="text" placeholder="description...." [(ngModel)]="description">
+      <button type="submit">Add Todo</button>
+    </form>
+  </div>
+  
