@@ -1,6 +1,6 @@
 import { Task } from "./task";
 
-export class taslManager{
+export class taskManager{
     tasks:Task[]=[]
 
     //adding task
@@ -38,6 +38,15 @@ export class taslManager{
     getPendingtasks(){
         let pendingTasks=this.tasks.filter((el)=>el.isCompleted==false)
         return pendingTasks
+    }
+
+    getdueTasktoday(){
+        const today=new Date()
+        return this.tasks.filter((el)=>el.dueDate.toDateString()==today.toDateString())
+    }
+    getOverdueTasks(){
+       const today=new Date()
+       return this.tasks.filter((el)=>el.dueDate<today && !el.isCompleted) 
     }
 
 }

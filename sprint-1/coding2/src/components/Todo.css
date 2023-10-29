@@ -1,0 +1,49 @@
+/* Add your CSS styles here */
+
+/* Example styles for the main container */
+.container {
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 80%;
+    
+  }
+  
+  /* Example styles for list items */
+  .list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  /* Example styles for buttons */
+  .button,.del-button {
+    background: #3182CE;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  .del-button{
+    background: #b71f21;
+  }
+  
+  /* Example styles for selected items */
+  .selected {
+    background: #EDF2F7;
+  }
+  .add-favorite, .remove-favorite {
+    background: rgb(10, 127, 167);
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .remove-favorite {
+    background: rgb(207, 58, 160);
+    
+  }

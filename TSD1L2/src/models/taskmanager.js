@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.taslManager = void 0;
-class taslManager {
+exports.taskManager = void 0;
+class taskManager {
     constructor() {
         this.tasks = [];
     }
@@ -35,5 +35,13 @@ class taslManager {
         let pendingTasks = this.tasks.filter((el) => el.isCompleted == false);
         return pendingTasks;
     }
+    getdueTasktoday() {
+        const today = new Date();
+        return this.tasks.filter((el) => el.dueDate.toDateString() == today.toDateString());
+    }
+    getOverdueTasks() {
+        const today = new Date();
+        return this.tasks.filter((el) => el.dueDate < today && !el.isCompleted);
+    }
 }
-exports.taslManager = taslManager;
+exports.taskManager = taskManager;
