@@ -1,0 +1,10 @@
+.container{
+    width:50%;
+    margin: 0 auto;
+    background-color: azure;
+    padding: 10px;
+    text-align: center;
+}
+.result h1{
+color:#030c62;
+}

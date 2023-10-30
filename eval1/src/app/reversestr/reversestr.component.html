@@ -1,11 +1,11 @@
 <div class="container">
-    <h2>String Reverse</h2>
+    <h1>String Reverse</h1>
     <input [(ngModel)]="inputstring" placeholder="enter string...." />
     <button (click)="reverseString()">reverse</button>
 
-    <div class="result">
+    <div *ngIf="reversedString" class="result">
 
-        <p>reversed String</p>
+        <h1>Reversed String :</h1>
         <h3>{{reversedString}}</h3>
     </div>
 </div>
