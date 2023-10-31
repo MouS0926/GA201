@@ -7,4 +7,6 @@ export class Product{
     details!:string
     category!:string
     quantity!:number
+    stock!:number
+    
 }

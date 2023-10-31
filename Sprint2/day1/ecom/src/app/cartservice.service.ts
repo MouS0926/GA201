@@ -18,7 +18,7 @@ export class CartserviceService {
     if (isExist) {
       alert('Product is already added to the cart!');
     } else {
-      this.cart.push(product);
+      this.cart.push({...product,quantity:1});
       localStorage.setItem('cart', JSON.stringify(this.cart));
     }
   }
@@ -29,5 +29,22 @@ export class CartserviceService {
 
   getCart(): Product[] {
     return this.cart;
+  }
+  removeFromCart(product:Product){
+    let UpdatedProduct=this.cart.filter((el)=>el.id!=product.id)
+    localStorage.setItem("cart",JSON.stringify(UpdatedProduct))
+    
+  }
+  
+
+  updateQuantity(product: Product, newQuantity: number) {
+    this.cart = this.cart.map((item) => {
+      if (item.id === product.id) {
+        item.quantity = newQuantity;
+      }
+      return item;
+    });
+
+    localStorage.setItem('cart', JSON.stringify(this.cart));
   }
 }

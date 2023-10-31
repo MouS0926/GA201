@@ -15,7 +15,8 @@ export class ProductListComponent implements OnInit {
     details:"lorem ipsum",
     image:"https://assets.ajio.com/medias/sys_master/root/20230624/VLik/6496404ba9b42d15c9d7ec40/-473Wx593H-465144489-white-MODEL.jpg",
   category:"home-decor",
-  quantity:3
+  quantity:0,
+  stock:10
   },
    
     { id:2,title: 'Product 2',
@@ -24,7 +25,8 @@ export class ProductListComponent implements OnInit {
     details:"lorem ipsum",
     image:"https://assets.ajio.com/medias/sys_master/root/20230621/pvAR/6493286ad55b7d0c639ea9bf/-473Wx593H-466295481-grey-MODEL.jpg",
     category:"home-decor",
-    quantity:3
+    quantity:0,
+    stock:4
   },
    
     {id:3, title: 'Product 3', description: 'Description 3',
@@ -32,14 +34,16 @@ export class ProductListComponent implements OnInit {
     details:"lorem ipsum",
     image:"https://assets.ajio.com/medias/sys_master/root/20230624/v4d8/649645d5a9b42d15c9d8aa2a/-473Wx593H-465144477-black-MODEL.jpg",
     category:"home-decor",
-    quantity:3
+    quantity:0,
+    stock:5
    },
    {id:4, title: 'Kurta', description: 'Description 3',
    price:880,
    details:"lorem ipsum",
    image:"https://assets.ajio.com/medias/sys_master/root/20221219/m0oe/63a00760aeb269659cf189d1/-473Wx593H-441149576-navy-MODEL.jpg",
    category:"clothing",
-   quantity:3
+   quantity:0,
+    stock:8
   },
 ];
 
@@ -58,6 +62,13 @@ cart : Product[]=[]
   ngOnInit(): void {
    
     this.cart=this.cartService.getCart()
+
+
+
+    const cartProducts = localStorage.getItem('cart');
+    if (cartProducts) {
+        this.cart = JSON.parse(cartProducts);
+    }
 
     const storedProducts = localStorage.getItem('products');
     if (storedProducts) {
@@ -85,7 +96,7 @@ cart : Product[]=[]
 
   addtoCart(product:Product){
     this.cartService.addToCart(product)
-   
+    this.cart = this.cartService.getCart()
    
   }
 
