@@ -119,7 +119,14 @@ const handleQaulityCheck=()=>{
         isLoading={isLoadingChecker} 
         loadingText="Checking...."
         >Quality Checker</Button>
+
+
+<Button colorScheme="blue" >Push to github</Button>
+
       </HStack>
+
+     
+   
 
       <Flex justify="space-between" p={3} direction={['column', 'row']}>
         <Box bg="black" width={['100%', '50%']} p={4} color="white">

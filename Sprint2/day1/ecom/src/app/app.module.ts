@@ -3,15 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ReversestrComponent } from './reversestr/reversestr.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { CartComponent } from './cart/cart.component';
+import { Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ReversestrComponent,
-    EmployeeDashboardComponent
+    ProductListComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

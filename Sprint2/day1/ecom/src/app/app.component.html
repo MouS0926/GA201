@@ -304,12 +304,6 @@
 
 
 
-<div class="content" role="main">
-
- 
-
- 
-</div>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
@@ -319,6 +313,16 @@
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<router-outlet></router-outlet>
-<app-reversestr></app-reversestr>
-<app-employee-dashboard></app-employee-dashboard>
+
+<div>
+  <h1>My Angular App</h1>
+  <ul>
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/cart">Cart</a></li>
+  </ul>
+  <router-outlet>
+   
+   
+  </router-outlet>
+</div>
+

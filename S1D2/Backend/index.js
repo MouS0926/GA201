@@ -1,6 +1,8 @@
 const express=require("express")
 const cors=require("cors")
 const axios=require("axios")
+const https = require("https");
+
 require("dotenv").config()
 
 const app=express()
@@ -10,6 +12,90 @@ app.use(cors())
 app.get("/",(req,res)=>{
     res.send("hello")
 })
+
+// GITHUB_CLIENT_ID
+// GITHUB_CLIENT_SECRETd
+const githubClientID = process.env.GITHUB_CLIENT_ID
+const githubClientSecret = process.env.GITHUB_CLIENT_SECRET
+
+const frontendURL = "https://code-converter-theta.vercel.app";
+
+
+// Route to exchange code for an access token
+app.get("/auth/github/callback", async (req, res) => {
+  const { code } = req.query;
+  const params = `?client_id=${githubClientID}&client_secret=${githubClientSecret}&code=${code}`;
+
+  try {
+    const tokenResponse = await fetch(`https://github.com/login/oauth/access_token${params}`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    const tokenData = await tokenResponse.json();
+    res.json(tokenData);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error);
+  }
+});
+
+// Route to fetch user data using the access token
+app.get("/getUserData", async (req, res) => {
+  const accessToken = req.get("Authorization");
+
+  try {
+    const userResponse = await fetch("https://api.github.com/user", {
+      method: "GET",
+      headers: {
+        Authorization: accessToken,
+      },
+    });
+
+    const userData = await userResponse.json();
+    res.json(userData);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error);
+  }
+});
+
+// Route to push code to a GitHub repository
+app.post("/push", async (req, res) => {
+  const { owner, repo, message, committerName, committerEmail, content, path } = req.body;
+  const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+  const requestBody = {
+    message,
+    committer: {
+      name: committerName,
+      email: committerEmail,
+    },
+    content,
+    sha: "83c831f0b085c70509b1fbb0a0131a9a32e691ac",
+  };
+  const options = {
+    method: "PUT",
+    headers: {
+      Authorization: req.get("Authorization"),
+      "Content-Type": "application/json",
+      "X-GitHub-Api-Version": "2022-11-28",
+      Accept: "application/vnd.github+json",
+    },
+    body: JSON.stringify(requestBody),
+  };
+
+  try {
+    const pushResponse = await fetch(url, options);
+    const pushData = await pushResponse.json();
+    res.json(pushData);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error);
+  }
+});
+
 
 app.post("/convert",async (req,res)=>{
 
