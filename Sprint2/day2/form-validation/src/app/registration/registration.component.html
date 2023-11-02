@@ -1,29 +1,66 @@
 
 
-
-
 <div class="container">
-    <form action="" class="regform" (ngSubmit)="onSubmit(registrationForm)" #registrationForm="ngForm">
-        <input type="text" name="name" [(ngModel)]="user.name" placeholder="Enter Name......" required minlength="3">
-      <div [ngClass]="{'errorCls':true}" *ngIf="registrationForm.controls['name'].invalid && (registrationForm.controls['name'].dirty || registrationForm.controls['name'].touched)">
-        <div *ngIf="registrationForm.controls['name'].hasError('required')" >Name field is required</div>
-        <div *ngIf="registrationForm.controls['name'].hasError('minlength')">Atleast 3 characters required</div>
-      </div>
-      
-        <input type="email" name="email" [(ngModel)]="user.email" placeholder="Enter Email......">
+    <form (ngSubmit)="onSubmit(registrationForm)" #registrationForm="ngForm" class="regform">
+        <h2>User Registration Form</h2>
         
-        <input type="password" name="password" [(ngModel)]="user.password" [ngModelOptions]="{standalone:true}" required placeholder="Enter Password......" (input)="passwordStrength(registrationForm.controls['password'])">
-
-        <div [ngClass]="{'errorCls': true}" *ngIf="registrationForm.controls['password'].invalid && (registrationForm.controls['password'].dirty || registrationForm.controls['password'].touched)">
-            <div *ngIf="registrationForm.controls['password'].hasError('required')">Password is required</div>
-            <div *ngIf="registrationForm.controls['password'].hasError('passwordWeak')">Password should contain at least one lowercase letter, one uppercase letter, one digit, and one special character (@$!%*?&), and be at least 6 characters long.</div>
-        </div>
-        
-        <input type="confirmPassword" name="confirmPassword" [(ngModel)]="user.confirmPassword" placeholder="Confirm Password ......">
-        
-        <input type="text" name="phoneNumber" [(ngModel)]="user.phoneNumber" placeholder="Enter Phone Number......">
+        <label for="name" class="">Your Full Name</label>
+            <input type="text" id="name" name="name" minlength="3" required [(ngModel)]="user.name" #name="ngModel" class="" placeholder="" />
+            
+          
+            <div [ngClass]="{'errorCls':true}" *ngIf="name.invalid && (name.dirty || name.touched)" class="">
+                <div *ngIf="name.errors?.['required']">Name is required</div>
+                <div *ngIf="name.errors?.['minlength']">Name must be atleast 3 chracter</div>
+            </div>
        
-        <button type="submit" [disabled]="registrationForm.invalid">Submit</button>
+    
+            <label for="email" class="">Your Email</label>
+            <input type="email" email id="email" name="email" required [(ngModel)]="user.email" #email="ngModel" class="" placeholder="" />
+           
+            <div [ngClass]="{'errorCls':true}" *ngIf="email.invalid && (email.dirty || email.touched)" class="">
+                <div *ngIf="email.errors?.['required']">Email is required</div>
+                <div *ngIf="email.errors?.['email']">Email is Invalid</div>
+            </div>
+       
+    
+            <label for="password" class="">Your Password</label>
+            <input type="password" id="password" name="password" required [(ngModel)]="user.password" #password="ngModel"  placeholder=" " required />
+         
+            <div [ngClass]="{'errorCls':true}" *ngIf="password.invalid && (password.dirty || password.touched)">
+                <div *ngIf="password.errors?.['required']">Password is required</div>
+            </div>
+            <div [ngClass]="{'errorCls':true}" *ngIf="passwordCheck()">Password must have at least 6 characters with one uppercase, one lowercase, one digit, and one special character</div>
+        
+    
+            <label for="confirmPass" class="">Your Confirm Password</label>
+            <input type="password" id="confirmPass" name="confirmPass" required [(ngModel)]="user.confirmPass" #confirmPass="ngModel" placeholder=" " required />
+           
+            <div [ngClass]="{'errorCls':true}" *ngIf="confirmPass.invalid && (confirmPass.dirty || confirmPass.touched)" [ngClass]="{'errorCls':true}">
+                <div *ngIf="confirmPass.errors?.['required']">Comfirm Password is required</div>
+            </div>
+            <div [ngClass]="{'errorCls':true}" *ngIf="confirmPassCheck()" >Confirm Password is not matching with Password</div>
+        
+    
+            <label for="phone" class="">Your Mobile No.</label>
+            <input type="text" id="phone" name="phone" pattern="^\(\d{3}\)\d{3}-\d{4}$"  required [(ngModel)]="user.phone" #phone="ngModel"  placeholder="" />
+           
+            <div [ngClass]="{'errorCls':true}" *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                <div *ngIf="phone.errors?.['required']">Phone is required</div>
+                <div *ngIf="phone.errors?.['pattern']">Phone number should match following  format  (123)456-7890.</div>
+            </div>
+       
+            <label for="phone" class="">Date of Birth</label>
+            <input type="date" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="user.dateOfBirth" #dateOfBirth="ngModel" placeholder="date of birth">
+        
+            <div [ngClass]="{'errorCls':true}" *ngIf="dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched)">
+                    <div *ngIf="!dateOfbirthCheck(user.dateOfBirth)">You must be at least 18 years old</div>
+            </div>
+    
+        <button type="submit" [ngClass]="{'buttoncls':!registrationForm.invalid}"  [disabled]="registrationForm.invalid" >SUBMIT</button>
     </form>
+      
+    <!-- <div *ngIf="flag" class="">
+        {{user | json}}
+    </div> -->
 </div>
 

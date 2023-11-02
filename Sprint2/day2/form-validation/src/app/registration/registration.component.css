@@ -12,10 +12,23 @@
     display: flex;
     gap: 10px;
     flex-direction: column;
+    background-color: #c9f2f4;
+    padding: 10px;
+    border-radius: 5px;
 }
 .regform input{
     font-size: 18px;
 }
 .errorCls{
     color: rgb(202, 26, 26);
+}
+button{
+    padding: 10px;
+    border: 0;
+    background-color: #b5b7b7;
+}
+.buttoncls{
+    padding: 10px;
+    border: 0;
+    background-color: #086486;
 }
