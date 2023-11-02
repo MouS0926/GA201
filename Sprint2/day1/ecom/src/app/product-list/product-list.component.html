@@ -1,3 +1,26 @@
+
+
+<div class="topContainer">
+  <label for="categories" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Filter by Category</label>
+  <select id="categories" [(ngModel)]="selectedCategory" (change)="filterProduct()" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    <option value="">Select Category</option>
+    <option value="home-decor">Home Decor</option>
+    <option value="clothing">Clothing</option>
+    <option value="electronics">Electronics</option>
+  </select>
+
+
+
+
+  <label for="sort" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sort by Price</label>
+  <select id="sort" [(ngModel)]="selectedSortOption" (change)="sortProduct()" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    <option value="">Sort by Price</option>
+    <option value="asc">Ascending</option>
+    <option value="desc">Descending</option>
+
+  </select>
+</div>
+
 <div class="container">
     <div *ngFor="let product of filteredProducts" class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <a href="#">

@@ -1,0 +1,21 @@
+.container{
+    width: 40%;
+    margin: 0 auto;
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+}
+
+.regform{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+.regform input{
+    font-size: 18px;
+}
+.errorCls{
+    color: rgb(202, 26, 26);
+}

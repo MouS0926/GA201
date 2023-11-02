@@ -48,4 +48,12 @@ export class CartComponent {
     }
    }
   
+   calculateTotalAmount(): number {
+    let total = 0;
+    this.cart.forEach((el) => {
+      total += el.quantity * el.price;
+    });
+    return total;
+  }
+
 }

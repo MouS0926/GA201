@@ -1,0 +1,29 @@
+
+
+
+
+<div class="container">
+    <form action="" class="regform" (ngSubmit)="onSubmit(registrationForm)" #registrationForm="ngForm">
+        <input type="text" name="name" [(ngModel)]="user.name" placeholder="Enter Name......" required minlength="3">
+      <div [ngClass]="{'errorCls':true}" *ngIf="registrationForm.controls['name'].invalid && (registrationForm.controls['name'].dirty || registrationForm.controls['name'].touched)">
+        <div *ngIf="registrationForm.controls['name'].hasError('required')" >Name field is required</div>
+        <div *ngIf="registrationForm.controls['name'].hasError('minlength')">Atleast 3 characters required</div>
+      </div>
+      
+        <input type="email" name="email" [(ngModel)]="user.email" placeholder="Enter Email......">
+        
+        <input type="password" name="password" [(ngModel)]="user.password" [ngModelOptions]="{standalone:true}" required placeholder="Enter Password......" (input)="passwordStrength(registrationForm.controls['password'])">
+
+        <div [ngClass]="{'errorCls': true}" *ngIf="registrationForm.controls['password'].invalid && (registrationForm.controls['password'].dirty || registrationForm.controls['password'].touched)">
+            <div *ngIf="registrationForm.controls['password'].hasError('required')">Password is required</div>
+            <div *ngIf="registrationForm.controls['password'].hasError('passwordWeak')">Password should contain at least one lowercase letter, one uppercase letter, one digit, and one special character (@$!%*?&), and be at least 6 characters long.</div>
+        </div>
+        
+        <input type="confirmPassword" name="confirmPassword" [(ngModel)]="user.confirmPassword" placeholder="Confirm Password ......">
+        
+        <input type="text" name="phoneNumber" [(ngModel)]="user.phoneNumber" placeholder="Enter Phone Number......">
+       
+        <button type="submit" [disabled]="registrationForm.invalid">Submit</button>
+    </form>
+</div>
+
