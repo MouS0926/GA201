@@ -4,9 +4,25 @@
       <span>My Angular App</span>
     </div>
     <ul class="nav-links">
-      <li><a routerLink="/" routerLinkActive="active">Home</a></li>
-      <li><a routerLink="/product" routerLinkActive="active">Products</a></li>
-      <li><a routerLink="/login" routerLinkActive="active">login</a></li>
+  
+      <li><a routerLink="/" routerLinkActive="active">Products</a></li>
+      <li>
+
+        <ng-container *ngIf="isLoggedIn;else loginLink">
+            <a routerLink="/login" routerLinkActive="active">Logout</a>
+        </ng-container>
+        
+        <ng-template #loginLink>
+            <a routerLink="/login" routerLinkActive="active">Login</a>
+        </ng-template>
+    
+    </li>
+
+    <ng-container *ngIf="isLoggedIn">
+        <li><a routerLink="/cart" routerLinkActive="active">Cart</a></li>
+    </ng-container>
+
+    
     </ul>
   </nav>
   

@@ -24,7 +24,7 @@
             <h3>{{product.title}}</h3>
             <h4>{{product.price}}</h4>
             <h4>{{product.category}}</h4>
-            <button type="button">Add to cart</button>
+            <button type="button" (click)="addtoCart(product)" >{{isItemIncart(product)?'Go to cart':'Add to Cart'}}</button>
         </div>
     </ng-template>
     

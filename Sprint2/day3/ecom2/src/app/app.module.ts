@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     LoadingIndicatorComponent,
     ProductDetailsComponent,
     LoginPageComponent,
-    NavbarComponent
+    NavbarComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

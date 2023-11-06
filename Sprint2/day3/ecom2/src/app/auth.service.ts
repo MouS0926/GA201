@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 interface LoginResponse {
   token: string;
@@ -10,7 +11,8 @@ interface LoginResponse {
   providedIn: 'root'
 })
 export class AuthService {
-
+  
+  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
   constructor(private http:HttpClient,private router:Router) { }
 
   login(email:string,password:string){
@@ -38,5 +40,5 @@ export class AuthService {
    const authToken= localStorage.getItem("authToken")
    return !!authToken
   }
-  
+
 }
