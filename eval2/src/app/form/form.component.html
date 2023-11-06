@@ -10,16 +10,25 @@
       <div *ngIf="regForm.controls['email'].hasError('required')">Email is required</div>
       <div *ngIf="regForm.controls['email'].hasError('email')">Invalid email address</div>
     </div>
-    
+
+    <input type="number" name="age" id="age" [(ngModel)]="user.age" placeholder="age..." required min="18" max="35">
+    <div *ngIf="regForm.controls['age'].invalid && (regForm.controls['age'].dirty || regForm.controls['age'].touched)">
+      <div *ngIf="regForm.controls['age'].hasError('required')">Age is required</div>
+      <div *ngIf="regForm.controls['age'].hasError('min')">Age must be at least 18</div>
+      <div *ngIf="regForm.controls['age'].hasError('max')">Age must be less than 35</div>
+    </div>
+
     <input type="password" name="password" id="password" [(ngModel)]="user.password" placeholder="password..." required minlength="6">
     
-    <input type="number" name="age" id="age" [(ngModel)]="user.age" placeholder="age..." required min="18" max="99">
-    
+
     <select name="country" id="country" [(ngModel)]="user.country" required>
       <option value="">Select country</option>
     <option value="india">India</option>
     <option value="india">Nepal</option>
     </select>
+    <div *ngIf="regForm.controls['country'].invalid && (regForm.controls['country'].dirty || regForm.controls['country'].touched)">
+        <div *ngIf="regForm.controls['country'].hasError('required')">select a country</div>
+      </div>
     
     <input type="checkbox" name="accept" id="accept" [(ngModel)]="user.accept" required>
     <label for="accept">accept </label>
