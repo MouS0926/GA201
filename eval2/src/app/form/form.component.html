@@ -1,4 +1,4 @@
-<form #regForm="ngForm" (ngSubmit)="onSubmit(regForm)">
+<form #regForm="ngForm" (ngSubmit)="onSubmit(regForm)" >
     <input type="text" name="name" id="name" [(ngModel)]="user.name" placeholder="name..." required pattern="^[A-Z a-z]+$">
     <div *ngIf="regForm.controls['name'].invalid && (regForm.controls['name'].dirty || regForm.controls['name'].touched)">
       <div *ngIf="regForm.controls['name'].hasError('required')">Name is required</div>
@@ -19,7 +19,10 @@
     </div>
 
     <input type="password" name="password" id="password" [(ngModel)]="user.password" placeholder="password..." required minlength="6">
-    
+    <div *ngIf="regForm.controls['password'].invalid && (regForm.controls['password'].dirty || regForm.controls['password'].touched)">
+        <div *ngIf="regForm.controls['password'].hasError('required')">Password is required</div>
+        <div *ngIf="regForm.controls['password'].hasError('minlength')">Password must be at least 6 characters</div>
+      </div>
 
     <select name="country" id="country" [(ngModel)]="user.country" required>
       <option value="">Select country</option>
@@ -31,8 +34,10 @@
       </div>
     
     <input type="checkbox" name="accept" id="accept" [(ngModel)]="user.accept" required>
-    <label for="accept">accept </label>
-    
+    <label for="accept">I accept </label>
+    <div *ngIf="regForm.controls['accept'].invalid && (regForm.controls['accept'].dirty || regForm.controls['accept'].touched)">
+        <div *ngIf="regForm.controls['accept'].hasError('required')">You must accept the terms and conditions</div>
+      </div>
     <button type="submit" [disabled]="regForm.invalid">Submit</button>
   </form>
   
