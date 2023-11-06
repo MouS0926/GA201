@@ -1,24 +1,29 @@
-<p>form works!</p>
-<!-- Email should be required and follow a valid email format.
-   - Password should be required and have a minimum length.
-   - Age should be a required numeric value within a specified range.
-   - Country selection should be required.
-   - Acceptance of terms and conditions should be required. -->
-
-<form  #regForm="ngForm" (ngSubmit)="onSubmit(regForm)">
-    <input type="text" name="name" id="name"  [(ngModel)]="user.name" placeholder="name..." required pattern="^[A-Za-z]+$">
-   <div *ngIf="name.invalid && (name.dirty|| name.touched)">
-    <div *ngIf="name.errors?.['required']">name is required</div>
-    <div *ngIf="name.errors?.['pattern']">Name should not contain number or special character</div>
-
-   </div>
-   
-    <input type="email" name="" id="" placeholder="email.." >
-    <input type="password" name="" id="" placeholder="password..">
-    <input type="number" name="" id="" placeholder="age..">
-    <select name="" id="">
-        <option value="">select country</option>
+<form #regForm="ngForm" (ngSubmit)="onSubmit(regForm)">
+    <input type="text" name="name" id="name" [(ngModel)]="user.name" placeholder="name..." required pattern="^[A-Z a-z]+$">
+    <div *ngIf="regForm.controls['name'].invalid && (regForm.controls['name'].dirty || regForm.controls['name'].touched)">
+      <div *ngIf="regForm.controls['name'].hasError('required')">Name is required</div>
+      <div *ngIf="regForm.controls['name'].hasError('pattern')">Name should not contain numbers or special characters</div>
+    </div>
+    
+    <input type="email" name="email" id="email" [(ngModel)]="user.email" placeholder="email..." required email>
+    <div *ngIf="regForm.controls['email'].invalid && (regForm.controls['email'].dirty || regForm.controls['email'].touched)">
+      <div *ngIf="regForm.controls['email'].hasError('required')">Email is required</div>
+      <div *ngIf="regForm.controls['email'].hasError('email')">Invalid email address</div>
+    </div>
+    
+    <input type="password" name="password" id="password" [(ngModel)]="user.password" placeholder="password..." required minlength="6">
+    
+    <input type="number" name="age" id="age" [(ngModel)]="user.age" placeholder="age..." required min="18" max="99">
+    
+    <select name="country" id="country" [(ngModel)]="user.country" required>
+      <option value="">Select country</option>
+    <option value="india">India</option>
+    <option value="india">Nepal</option>
     </select>
-    <input type="checkbox" name="" id="" >accept
-    <button type="submit">submit</button>
-</form>
+    
+    <input type="checkbox" name="accept" id="accept" [(ngModel)]="user.accept" required>
+    <label for="accept">accept </label>
+    
+    <button type="submit" [disabled]="regForm.invalid">Submit</button>
+  </form>
+  
