@@ -1,0 +1,24 @@
+<p>form works!</p>
+<!-- Email should be required and follow a valid email format.
+   - Password should be required and have a minimum length.
+   - Age should be a required numeric value within a specified range.
+   - Country selection should be required.
+   - Acceptance of terms and conditions should be required. -->
+
+<form  #regForm="ngForm" (ngSubmit)="onSubmit(regForm)">
+    <input type="text" name="name" id="name"  [(ngModel)]="user.name" placeholder="name..." required pattern="^[A-Za-z]+$">
+   <div *ngIf="name.invalid && (name.dirty|| name.touched)">
+    <div *ngIf="name.errors?.['required']">name is required</div>
+    <div *ngIf="name.errors?.['pattern']">Name should not contain number or special character</div>
+
+   </div>
+   
+    <input type="email" name="" id="" placeholder="email.." >
+    <input type="password" name="" id="" placeholder="password..">
+    <input type="number" name="" id="" placeholder="age..">
+    <select name="" id="">
+        <option value="">select country</option>
+    </select>
+    <input type="checkbox" name="" id="" >accept
+    <button type="submit">submit</button>
+</form>
