@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-card',
@@ -13,7 +14,8 @@ export class ProductCardComponent implements OnInit {
   searchQuery: string = '';
   filteredProducts:any[]=[]
   selectedCategory:string=""
-constructor(private produtcService:ProductService){}
+
+constructor(private produtcService:ProductService,private router:Router){}
 
   ngOnInit() {
     this.produtcService.getProducts().subscribe(
@@ -40,6 +42,9 @@ constructor(private produtcService:ProductService){}
     )
   }
 
+  onProductClick(productId: number) {
+    this.router.navigate(['/product', productId]);
+  }
 
   
 }

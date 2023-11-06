@@ -9,13 +9,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; // Import the MatProgressSpinnerModule
 import { FormsModule } from '@angular/forms';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductCardComponent,
-    LoadingIndicatorComponent
+    LoadingIndicatorComponent,
+    ProductDetailsComponent,
+    LoginPageComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
