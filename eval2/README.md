@@ -30,7 +30,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 1. Clone the repository:
 
    ```bash
+<<<<<<< HEAD
    git clone https://github.com/
+=======
+   git clone https://github.com/MouS0926/GA201.git
+>>>>>>> 60dd74c9741bc7eeda4d65e7df48b57b631e7059
 
    cd angular-user-registration-form
 
