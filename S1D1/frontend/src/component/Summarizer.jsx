@@ -18,6 +18,10 @@ export default function Summarizer() {
     const [translatedText,setTranslatedtext]=useState("")
     const [generatedText,setGeneratedtext]=useState("")
 
+    const [recognizedEmotion, setRecognizedEmotion] = useState("");
+const { hasCopiedEmotion, onCopyEmotion } = useClipboard(recognizedEmotion);
+
+
     // console.log(language);
     const { hasCopied, onCopy } = useClipboard(summarizedText);
     const { hasCopiedtranslated, onCopyTranslated } = useClipboard(translatedText);
@@ -67,6 +71,19 @@ const handleGenerateText=()=>{
     })
 }
 
+
+const handleEmotionRecognition = () => {
+    setLoading(true);
+    axios.post("http://localhost:8080/emotion", { text })
+      .then((res) => {
+        setLoading(false);
+        setRecognizedEmotion(res.data.resp);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  
   return (
     <div>
 
@@ -76,6 +93,7 @@ const handleGenerateText=()=>{
       <Tab> Text Generator</Tab>
         <Tab>Summarizer</Tab>
         <Tab>Translator</Tab>
+        <Tab>Emotion Analyze</Tab>
        
       </TabList>
 
@@ -177,6 +195,39 @@ Translate into:
                                 </Button>
                             }
                     </TabPanel>
+
+
+                    <TabPanel>
+  <Textarea bg="white" placeholder='Enter your text here' value={text} onChange={(e) => setText(e.target.value)} />
+  <br /><br />
+  <Button
+    colorScheme='teal'
+    size='sm'
+    onClick={handleEmotionRecognition}
+    isLoading={isLoading}
+    loadingText="Recognizing Emotion..."
+  >
+    Recognize Emotion
+  </Button>
+  &nbsp;
+  <Button colorScheme='teal' size='sm' onClick={() => setText("")}>
+    Clear
+  </Button>
+  <br /><br />
+  {recognizedEmotion &&
+    <Box bg='tomato' w='100%' p={4} color='white'>
+      {recognizedEmotion}
+    </Box>
+  }
+  <br />
+  {recognizedEmotion &&
+    <Button colorScheme='teal' size='sm' onClick={onCopyEmotion}>
+      {hasCopiedEmotion ? 'Copied!' : 'Copy to Clipboard'}
+    </Button>
+  }
+</TabPanel>
+
+
 
         
                     </TabPanels>

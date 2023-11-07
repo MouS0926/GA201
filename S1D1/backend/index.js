@@ -123,6 +123,45 @@ app.post('/summarize', async (req, res) => {
     }
   });
 
+
+  app.post('/emotion', async (req, res) => {
+    try {
+        
+      const {text} = req.body;
+  
+      const response = await openai.chat.completions.create({
+        model: "gpt-3.5-turbo",
+        messages: [
+          {
+            "role": "system",
+            "content": "you are a good Multilingual Sentiment Analyser and Emotion Recogniser who can recognize the sentiment and emotion of a given content in any language."
+          },
+          {
+            "role": "user",
+            "content":text
+          }
+        ],
+        temperature: 1,
+        max_tokens: 256,
+        top_p: 1,
+        frequency_penalty: 0,
+        presence_penalty: 0,
+      });
+   
+
+      const resp = response.choices[0].message.content;
+  // console.log(summary);
+      res.status(200).send({ resp });
+    } catch (error) {
+        console.log(error);
+      res.status(500).send({ error: 'An error occurred while summarizing the text.' });
+    }
+  });
+
+
+
+
+  
 //   {
 //     "text":"These all-natural disasters are directly associated with the climate.",
 //     "language":"bengali"
