@@ -1,0 +1,22 @@
+
+<div class="task-container">
+    <div *ngFor="let task of tasks" class="bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 max-w-sm p-6  border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <a href="#">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{task.title}}</h5>
+           
+            <div class="flex items-center mr-4">
+                <input [checked]="task.completed" (change)="taskToggle(task.id)" id="green-checkbox" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="green-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{task.completed?"Completed":"Pending"}}</label>
+            </div>
+
+        </a>
+        
+       <br>
+        <button type="button" [routerLink]="['/tasks', task.id]" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-3 py-2.5 text-center mr-2 mb-2">Details</button>
+       
+        <button type="button" (click)="deleteTask(task.id)" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-3 py-2.5 text-center mr-2 mb-2">Delete</button>
+   
+    </div>
+</div>
+
+
