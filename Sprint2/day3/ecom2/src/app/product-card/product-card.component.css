@@ -16,10 +16,30 @@
  height: 400px;
 
 }
-.card button{
+
+.go-to-cart{
+    background-color: rgb(187, 82, 30);
+}
+
+.top-container{
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0 20px 0;
+}
+.top-container input{
+    width: 65%;
+   
+}
+.top-container select{
+    width: 30%;
+   
+}
+/* .card button{
     background-color: rgb(15, 142, 142);
     padding: 5px;
     border-radius: 3px;
     font-size: 15px;
     color:#fff
-}
+} */

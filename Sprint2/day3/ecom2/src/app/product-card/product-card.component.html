@@ -1,14 +1,16 @@
 
+<div class="top-container">
+    <input type="text" [(ngModel)]="searchQuery" placeholder="Search by title..." (input)="SearchByTitle()">
 
-<input type="text" [(ngModel)]="searchQuery" placeholder="Search by title..." (input)="SearchByTitle()">
+    <select name="category" [(ngModel)]="selectedCategory" id="" (change)="SearchByTitle()">
+        <option value="">Select Category</option>
+        <option value="men's clothing">men's clothing</option>
+        <option value="women's clothing">women's clothing</option>
+        <option value="jewelery">jewelery</option>
+        <option value="electronics">electronics</option>
+    </select>
+</div>
 
-<select name="category" [(ngModel)]="selectedCategory" id="" (change)="SearchByTitle()">
-    <option value="">Select Category</option>
-    <option value="men's clothing">men's clothing</option>
-    <option value="women's clothing">women's clothing</option>
-    <option value="jewelery">jewelery</option>
-    <option value="electronics">electronics</option>
-</select>
 <div class="product-container">
 
         <div *ngIf="loading else productlist">
@@ -18,13 +20,27 @@
 
        
     <ng-template #productlist>
-        <div *ngFor="let product of filteredProducts" [ngClass]="{'card':true}" (click)="onProductClick(product.id)">
+        <div *ngFor="let product of filteredProducts" [ngClass]="{'card':true}" >
             
             <img src='{{product.image}}' alt="" srcset="">
-            <h3>{{product.title}}</h3>
+            <h3 (click)="onProductClick(product.id)" style="cursor: pointer;">{{product.title}}</h3>
             <h4>{{product.price}}</h4>
             <h4>{{product.category}}</h4>
-            <button type="button" (click)="addtoCart(product)" >{{isItemIncart(product)?'Go to cart':'Add to Cart'}}</button>
+
+            <ng-container *ngIf="product.rating.count === 0; else addToCartButton">
+           
+                <button class="text-white bg-gray-300 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" disabled>
+                  Out of Stock
+                </button>
+              </ng-container>
+              <ng-template #addToCartButton>
+               
+                <button type="button" (click)="addtoCart(product)" [ngClass]="isItemIncart(product) ? 'go-to-cart' : 'add-to-cart'"
+                class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">{{isItemIncart(product)?'Go to cart':'Add to Cart'}}</button> 
+            
+            </ng-template>
+
+            
         </div>
     </ng-template>
     
