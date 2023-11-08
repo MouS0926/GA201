@@ -1,0 +1,19 @@
+<!-- data-display.component.html -->
+
+
+
+<div class="data-display">
+    <h2>Data Display Component</h2>
+    <div *ngIf="data !== undefined; else loading">
+      <p>Data Received: {{ data }}</p>
+    </div>
+    <ng-template #loading>
+      <p>Loading...</p>
+    </ng-template>
+    <div *ngIf="error !== undefined">
+      <p>Error: {{ error }}</p>
+    </div>
+    <button (click)="fetchdata()">Fetch Data</button>
+  </div>
+  
+  
