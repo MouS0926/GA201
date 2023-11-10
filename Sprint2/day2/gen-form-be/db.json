@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "moumita",
+      "username": "m1",
+      "email": "m@mail.com",
+      "password": "Moumita1@",
+      "confirmPass": "Moumita1@",
+      "phone": "(123)456-7890",
+      "dateOfBirth": "",
+      "image": "https://img.freepik.com/free-photo/natures-beauty-captured-colorful-flower-close-up-generative-ai_188544-8593.jpg"
+    },
+    {
+      "name": "alice",
+      "username": "alice",
+      "email": "alice@mail.com",
+      "password": "Alice1@",
+      "confirmPass": "Alice1@",
+      "phone": "(456)456-7890",
+      "dateOfBirth": "2003-11-12",
+      "id": 2
+    },
+    {
+      "name": "cfrrr",
+      "username": "fef",
+      "email": "fr@mail.com",
+      "password": "Abcd1@",
+      "confirmPass": "Abcd1@",
+      "phone": "(123)456-7890",
+      "dateOfBirth": "2000-11-15",
+      "id": 3
+    },
+    {
+      "name": "amit sen",
+      "username": "amit",
+      "email": "amit@mail.com",
+      "password": "Amit1@",
+      "confirmPass": "Amit1@",
+      "phone": "(033)456-7890",
+      "dateOfBirth": "2000-11-08",
+      "id": 4,
+      "image": "https://img.freepik.com/free-photo/natures-beauty-captured-colorful-flower-close-up-generative-ai_188544-8593.jpg"
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 import { Component, } from '@angular/core';
 import { NgForm ,ValidationErrors,AbstractControl,FormsModule   } from '@angular/forms';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-registration',
@@ -7,36 +8,13 @@ import { NgForm ,ValidationErrors,AbstractControl,FormsModule   } from '@angular
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent {
-  // user = {
-  //   name: '',
-  //   email: '',
-  //   password: '',
-  //   confirmPassword: '',
-  //   phoneNumber: ''
-  // }
+  
 
-
-  // passwordStrength(passwordControl: AbstractControl): void {
-  //   const password = passwordControl.value;
-  //   const hasLowerCase = /[a-z]/.test(password);
-  //   const hasUpperCase = /[A-Z]/.test(password);
-  //   const hasDigit = /\d/.test(password);
-  //   const hasSpecialChar = /[@$!%*?&]/.test(password);
-  
-  //   if (!(hasLowerCase && hasUpperCase && hasDigit && hasSpecialChar && password.length >= 6)) {
-  //     passwordControl.setErrors({ 'passwordWeak': true });
-  //   } else {
-  //     passwordControl.setErrors(null);
-  //   }
-  // }
-  
-  // onSubmit(form:NgForm){
-  
-    
-  // }
+ 
 
   user: {
-     name: string, 
+     name: string,
+     username:string, 
      email:string,
      password:string,
      confirmPass:string,
@@ -45,13 +23,14 @@ export class RegistrationComponent {
     } =
   { 
     name: "",
+    username:"",
     email:"",
     password:"",
     confirmPass:"",
     phone:"",
     dateOfBirth:null
    };
-
+   constructor(private userService: UserService) { }
   flag: boolean = false;
 
   onSubmit(form: NgForm): void {
@@ -71,11 +50,54 @@ export class RegistrationComponent {
       alert("You must be at least 18 years old");
       return;
     }
-    if (form.valid) {
-      console.log(this.user);
-      this.flag = true;
-    }
+
+
+  //    if (form.valid) {
+  //   // Check if the username already exists
+  //   this.userService.checkUsername(this.user.username).subscribe(
+  //     usernameExists => {
+  //       if (usernameExists) {
+  //         alert('Username already exists. Please choose a different username.');
+  //       } else {
+  //         // If the username is unique, proceed with form submission
+  //         this.userService.addUser(this.user).subscribe(
+  //           res => {
+  //             console.log('User added successfully:', res);
+  //             this.flag = true;
+  //           },
+  //           err => {
+  //             console.log(err);
+  //           }
+  //         );
+  //       }
+  //     },
+  //     err => {
+  //       console.log(err);
+  //     }
+  //   );
+  // }
+
+  if (form.valid) {
+
+
+    this.userService.addUser(this.user).subscribe(
+                res => {
+                  console.log('User added successfully:', res);
+                  this.flag = true;
+                },
+                err => {
+                  console.log(err);
+                }
+              );
+
+
   }
+
+}
+
+
+
+
 
   passwordCheck(): boolean{
     if(this.user.password!==""){

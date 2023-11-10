@@ -5,15 +5,23 @@
         <h2>User Registration Form</h2>
         
         <label for="name" class="">Your Full Name</label>
-            <input type="text" id="name" name="name" minlength="3" required [(ngModel)]="user.name" #name="ngModel" class="" placeholder="" />
+            <input type="text" id="name" name="name" minlength="5" required [(ngModel)]="user.name" #name="ngModel" class="" placeholder="" />
             
           
             <div [ngClass]="{'errorCls':true}" *ngIf="name.invalid && (name.dirty || name.touched)" class="">
                 <div *ngIf="name.errors?.['required']">Name is required</div>
-                <div *ngIf="name.errors?.['minlength']">Name must be atleast 3 chracter</div>
+                <div *ngIf="name.errors?.['minlength']">Name must be atleast 5 chracter</div>
             </div>
-       
-    
+
+            <label for="name" class="">Your User Name</label>
+            <input type="text" id="username" name="username" minlength="3" required [(ngModel)]="user.username" #username="ngModel" class="" placeholder="" />
+            <div [ngClass]="{'errorCls':true}" *ngIf="username.invalid && (username.dirty || username.touched)" class="">
+                <div *ngIf="username.errors?.['required']">Username is required</div>
+                <div *ngIf="username.errors?.['minlength']">Username must be atleast 5 chracter</div>
+            </div>
+
+
+
             <label for="email" class="">Your Email</label>
             <input type="email" email id="email" name="email" required [(ngModel)]="user.email" #email="ngModel" class="" placeholder="" />
            

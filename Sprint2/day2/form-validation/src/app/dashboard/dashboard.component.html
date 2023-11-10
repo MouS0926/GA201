@@ -1,0 +1,24 @@
+<!-- dashboard.component.html -->
+<div class="container">
+    <h2>User Dashboard</h2>
+  
+    <div *ngIf="userDetails">
+      <p>Name: {{ userDetails.name }}</p>
+      <p>Username: {{ userDetails.username }}</p>
+      <p>Email: {{ userDetails.email }}</p>
+      <p>Phone: {{ userDetails.phone }}</p>
+      <p>Date of Birth: {{ userDetails.dateOfBirth }}</p>
+      
+      <!-- Display the image -->
+      <p *ngIf="userDetails.image">
+        Image: <img [src]="userDetails.image" alt="User Image" style="width:100px;"/>
+      </p>
+      <p *ngIf="!userDetails.image">No image available</p>
+  
+      <!-- Add an input field for updating the image URL -->
+      <label for="imageUrl">Image URL:</label>
+      <input type="text" id="imageUrl" [(ngModel)]="userDetails.image" />
+      <button (click)="updateImage()">Update Image</button>
+    </div>
+  </div>
+  
