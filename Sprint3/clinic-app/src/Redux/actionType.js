@@ -1,0 +1,27 @@
+//clinic action types
+export const CLINIC_REQ="CLINIC_REQ"
+export const CLINIC_FAIL="CLINIC_FAIL"
+
+export const CLINIC_GET_SUCCEESS="CLINIC_GET_SUCCEESS"
+
+//doctor
+export const DOCTOR_REQ="DOCTOR_REQ"
+export const DOCTOR_FAIL="DOCTOR_FAIL"
+
+export const DOCTOR_GET_SUCCEESS="DOCTOR_GET_SUCCEESS"
+
+//speciality
+export const SPECIALITY_REQ="SPECIALITY_REQ"
+export const SPECIALITY_FAIL="SPECIALITY_FAIL"
+
+export const SPECIALITY_GET_SUCCEESS="SPECIALITY_GET_SUCCEESS"
+
+
+//register
+export const REGISTER_REQ="REGISTER_REQ"
+export const REGISTER_FAIL="REGISTER_FAIL"
+export const REGISTER_SUCCEESS="REGISTER_SUCCEESS"
+//auth
+export const LOGIN_REQ="LOGIN_REQ"
+export const LOGIN_FAIL="LOGIN_FAIL"
+export const LOGIN_SUCCEESS="LOGIN_SUCCEESS"

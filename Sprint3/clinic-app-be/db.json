@@ -1,0 +1,289 @@
+{
+  "clinics": [
+    {
+      "id": 1,
+      "name": "City Medical Center",
+      "location": "123 Main Street, Cityville"
+    },
+    {
+      "id": 2,
+      "name": "Suburb Health Clinic",
+      "location": "456 Oak Avenue, Suburbia"
+    },
+    {
+      "id": 3,
+      "name": "Downtown Wellness Center",
+      "location": "789 Broadway, Downtown"
+    },
+    {
+      "id": 4,
+      "name": "Rural Family Clinic",
+      "location": "101 Pine Lane, Countryside"
+    },
+    {
+      "id": 5,
+      "name": "Coastal Medical Hub",
+      "location": "555 Ocean Drive, Coastal Town"
+    },
+    {
+      "id": 6,
+      "name": "Mountain View Health Center",
+      "location": "777 Summit Road, Mountain City"
+    }
+  ],
+  "specialties": [
+    {
+      "id": 1,
+      "name": "General Medicine"
+    },
+    {
+      "id": 2,
+      "name": "Dermatology"
+    },
+    {
+      "id": 3,
+      "name": "Pediatrics"
+    },
+    {
+      "id": 4,
+      "name": "Orthopedics"
+    },
+    {
+      "id": 5,
+      "name": "Cardiology"
+    },
+    {
+      "id": 6,
+      "name": "Gynecology"
+    }
+  ],
+  "doctors": [
+    {
+      "id": 1,
+      "name": "Dr. Smith",
+      "clinicId": 1,
+      "specialtyId": 1,
+      "availability": {
+        "Monday": [
+          "10:00",
+          "10:20",
+          "10:40",
+          "11:00",
+          "11:20"
+        ],
+        "Wednesday": [
+          "10:20",
+          "10:40",
+          "11:00",
+          "11:20"
+        ],
+        "Friday": [
+          "10:00",
+          "10:20",
+          "11:00",
+          "11:20"
+        ]
+      },
+      "rate": 1500,
+      "img": "1.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Dr. Johnson",
+      "clinicId": 1,
+      "specialtyId": 2,
+      "availability": {
+        "Monday": [
+          "10:00",
+          "10:20",
+          "10:40",
+          "11:00",
+          "11:20"
+        ],
+        "Tuesday": [
+          "10:00",
+          "10:20",
+          "10:40",
+          "11:00",
+          "11:20"
+        ],
+        "Friday": [
+          "10:00",
+          "10:20",
+          "10:40",
+          "11:00",
+          "11:20"
+        ]
+      },
+      "rate": 3500,
+      "img": "2.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Dr. Williams",
+      "clinicId": 2,
+      "specialtyId": 3,
+      "availability": {
+        "Monday": [
+          "10:00",
+          "10:20",
+          "10:40",
+          "11:00",
+          "11:20"
+        ],
+        "Wednesday": [
+          "10:00",
+          "10:20",
+          "10:40",
+          "11:00",
+          "11:20"
+        ],
+        "Friday": [
+          "10:00",
+          "10:20",
+          "10:40",
+          "11:00",
+          "11:20"
+        ]
+      },
+      "rate": 2350,
+      "img": "3.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Dr. Brown",
+      "clinicId": 3,
+      "specialtyId": 4,
+      "availability": {
+        "Monday": [
+          "10:00",
+          "10:20",
+          "10:40",
+          "11:00",
+          "11:20"
+        ],
+        "Thursday": [
+          "10:00",
+          "10:20",
+          "10:40",
+          "11:00",
+          "11:20"
+        ],
+        "Friday": [
+          "10:00",
+          "10:20",
+          "10:40",
+          "11:00",
+          "11:20"
+        ]
+      },
+      "rate": 500,
+      "img": "4.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Dr. Davis",
+      "clinicId": 4,
+      "specialtyId": 5,
+      "availability": {
+        "Sunday": [
+          "10:00",
+          "10:20",
+          "10:40",
+          "11:00",
+          "11:20"
+        ],
+        "Wednesday": [
+          "10:00",
+          "10:20",
+          "10:40",
+          "11:00",
+          "11:20"
+        ],
+        "Saturday": [
+          "10:00",
+          "10:20",
+          "10:40",
+          "11:00",
+          "11:20"
+        ]
+      },
+      "rate": 1200,
+      "img": "5.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Dr. Miller",
+      "clinicId": 5,
+      "specialtyId": 6,
+      "availability": {
+        "Monday": [
+          "10:00",
+          "10:20",
+          "10:40",
+          "11:00",
+          "11:20"
+        ],
+        "Wednesday": [
+          "10:00",
+          "10:20",
+          "10:40",
+          "11:00",
+          "11:20"
+        ],
+        "Friday": [
+          "10:00",
+          "10:20",
+          "10:40",
+          "11:00",
+          "11:20"
+        ]
+      },
+      "rate": 5500,
+      "img": "6.jpg"
+    }
+  ],
+  "appointments": [
+    {
+      "id": 1,
+      "doctorId": 1,
+      "patientName": "John Doe",
+      "date": "2023-11-15T10:00:00",
+      "status": "Confirmed"
+    },
+    {
+      "id": 2,
+      "doctorId": 2,
+      "patientName": "Jane Smith",
+      "date": "2023-11-16T14:30:00",
+      "status": "Confirmed"
+    },
+    {
+      "id": 3,
+      "doctorId": 3,
+      "patientName": "Alice Johnson",
+      "date": "2023-11-17T11:45:00",
+      "status": "Confirmed"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Rick Ray",
+      "email": "rick@mail.com",
+      "password": "rick123"
+    },
+    {
+      "name": "moumita",
+      "email": "moumita@mail.com",
+      "password": "mou",
+      "id": 2
+    },
+    {
+      "name": "reka",
+      "email": "reka@mail.com",
+      "password": "mou",
+      "id": 3
+    }
+  ]
+}
