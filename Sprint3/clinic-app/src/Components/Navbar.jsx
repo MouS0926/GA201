@@ -23,6 +23,12 @@ export default function Navbar() {
             :
             <Link to="/signup">Sign Up</Link>
         }
+        {
+            isAuth?
+            <Link to="/signup">My Bookings</Link>
+            :
+            ""
+        }
        
 </Stack>
   </Container>

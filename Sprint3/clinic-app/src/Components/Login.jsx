@@ -15,6 +15,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { registerUser } from '../Redux/Authredux/authAction'
 import { LOGIN_FAIL, LOGIN_REQ, LOGIN_SUCCEESS } from '../Redux/actionType'
+import { useNavigate } from 'react-router-dom'
 
 
 export default function Login() {
@@ -23,7 +24,7 @@ export default function Login() {
    
    const [email,setEmail]=useState("")
    const [password,setPassword]=useState("")
- 
+  const navigate=useNavigate()
 
    const dispatch = useDispatch();
 
@@ -40,7 +41,7 @@ const handleLogin=(e)=>{
         {
           let currentUser=res.data.find((el)=>el.email==email && el.password==password)
            dispatch({type:LOGIN_SUCCEESS,payload:currentUser})
-          console.log(cuser);
+        navigate("/")
         }
         else{
           dispatch({type:LOGIN_FAIL})

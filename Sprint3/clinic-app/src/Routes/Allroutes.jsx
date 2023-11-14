@@ -5,6 +5,7 @@ import Doctorlist from '../Components/Doctorlist'
 import Doctordetails from '../Components/Doctordetails'
 import Register from '../Components/Register'
 import Login from '../Components/Login'
+import Bookings from '../Components/Bookings'
 
 export default function Allroutes() {
   return (
@@ -15,6 +16,7 @@ export default function Allroutes() {
             <Route path='/doctors-details/:id' element={<Doctordetails/> }/>
             <Route path='/signup' element={<Register/> } />
             <Route path='/login' element={<Login/> } />
+            <Route path='/bookings' element={<Bookings/> }/>
         </Routes>
 
     </div>
