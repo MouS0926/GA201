@@ -3,10 +3,17 @@ import { useParams } from 'react-router-dom'
 
 import { Container,Card, CardBody, CardFooter, Image, Stack, Heading, Text, Button, Tabs, TabList, Tab, TabPanels, TabPanel } from '@chakra-ui/react'
 import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { bookAppointment } from '../Redux/bookingRedux/bookAction'
 
 export default function Doctordetails() {
     const {id}=useParams()
     const [doctor,setDoctor]=useState({})
+    const [selectedSlot, setSelectedSlot] = useState(null);
+    const [isSeleted,setIsSeletcted]=useState(false)
+    const dispatch=useDispatch()
+    const cuser=useSelector(store=>store.authReducer.currentuser)
+    console.log(cuser);
 
 useEffect(()=>{
     axios.get(`http://localhost:3001/doctors/${id}`)
@@ -18,8 +25,24 @@ useEffect(()=>{
     })
 },[id])
 
-console.log(doctor);
+const handleSeletecSlot=(time,day)=>{
+  setIsSeletcted(true)
+  setSelectedSlot({ time: Object.keys(time)[0], day })
+ 
+}
+const handleBookAppoinment=(ptName,userid)=>{
+let newAppoinment={...selectedSlot,
+ doctorId: id,
+ patientName: ptName,
+ 
+  status: false,
+  patientId: userid
+}
 
+  dispatch(bookAppointment(newAppoinment))
+}
+
+console.log(selectedSlot);
   return (
     <div>
 
@@ -30,8 +53,8 @@ console.log(doctor);
   variant='outline'
 >
   <Image
-    objectFit='cover'
-    maxW={{ base: '100%', sm: '200px' }}
+    objectFit='contain'
+    maxW={{ base: '100%', sm: '200px',md:'100%' }}
     src={`../Images/${doctor.img}`}
     alt='Caffe Latte'
   />
@@ -60,6 +83,9 @@ console.log(doctor);
             <Tab>{day}</Tab>
         </div>
     ))
+
+   
+
 }
 </TabList>
 
@@ -70,8 +96,17 @@ console.log(doctor);
       <TabPanel key={index}>
        
           {doctor.availability[day] && doctor.availability[day].map((time, timeIndex) => (
-            <Button key={timeIndex} variant='outline'  colorScheme='teal' size='sm' m={1}>
-              {time}
+            <Button key={timeIndex} 
+
+            variant={
+              isSeleted && selectedSlot.time === Object.keys(time)[0] && selectedSlot.day == day?'solid':'outline'
+            }  
+
+            onClick={()=>handleSeletecSlot(time,day)}
+            
+
+            isDisabled={!time[Object.keys(time)[0]]}  colorScheme='teal' size='sm' m={1}>
+              {Object.keys(time)[0]}
             </Button> 
           ))}
         
@@ -87,9 +122,15 @@ console.log(doctor);
     </CardBody>
 
     <CardFooter>
-      <Button variant='solid' colorScheme='blue'>
-        Buy Latte
+      {
+        isSeleted?
+      <Button variant='solid' colorScheme='blue' onClick={()=>handleBookAppoinment(cuser.name,cuser.id)}>
+        Book Slots
       </Button>
+      :
+      ''
+      }
+      
     </CardFooter>
   </Stack>
 </Card>

@@ -1,11 +1,17 @@
-import { Box, Container, Stack, Text } from '@chakra-ui/react'
+import { Box, Button, Container, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { LOGOUT } from '../Redux/actionType'
 
 export default function Navbar() {
     const isAuth=useSelector(store=>store.authReducer.isAuth)
     const current_user=useSelector(store=>store.authReducer.currentuser)
+  const dispatch=useDispatch()
+
+const handleLogout=()=>{
+  dispatch({type:LOGOUT})
+}
 
   return (
     <Container maxW='100%' bg='blue.600' color='white'>
@@ -13,7 +19,10 @@ export default function Navbar() {
         <Link to="/">Home</Link>
         {
             isAuth?
-            <Link to="">Logout</Link>
+            
+            <Button colorScheme='teal' size='sm' onClick={handleLogout}>
+             Logout
+            </Button>
             :
             <Link to="/login">Login</Link>
         }
@@ -25,7 +34,7 @@ export default function Navbar() {
         }
         {
             isAuth?
-            <Link to="/signup">My Bookings</Link>
+            <Link to="/bookings">My Bookings</Link>
             :
             ""
         }

@@ -1,0 +1,22 @@
+.container{
+    width: 95%;
+    margin: 0 auto;
+   
+    display: flex;
+
+
+    
+}
+.prod-container{
+    width: 80%;
+   
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+}
+
+.carttotal{
+    width: 20%;
+   
+    
+}

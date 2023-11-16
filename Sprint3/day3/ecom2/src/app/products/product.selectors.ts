@@ -10,3 +10,6 @@ export const selectProductList = createSelector(
   selectProductState,
   (state) => state.products
 );
+// export const selectProducts = createSelector(selectProductState, (state) => state.products);
+
+export const selectCartItems = createSelector(selectProductState, (state) => state.cart);

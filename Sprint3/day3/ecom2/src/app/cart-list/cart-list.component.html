@@ -1,0 +1,53 @@
+<p>cart-list works!</p>
+<div class="container">
+    <div *ngIf="cartProducts.length > 0; else emptyCart">
+        <h2>Your Cart</h2>
+        
+
+        <div class="prod-container">
+        <div *ngFor="let product of cartProducts">
+          <!-- Display cart product details -->
+          
+            <div>
+                <img [src]="product.product.image" alt="{{ product.product.title }}" width="100%" >
+                <h2>{{ product.product.title }}</h2>
+                <p>₹ {{ product.product.price }}</p>
+                <button (click)="decrementQuantity(product)">-</button>
+                {{product.quantity}}
+                <button (click)="incrementQuantity(product)">+</button>
+              </div>
+
+          </div>
+         
+        </div>
+
+        
+      
+      </div>
+
+      <div class="carttotal">
+       <h2>Cart Total</h2> 
+       <div *ngFor="let product of cartProducts">
+        <!-- Display cart product details -->
+        
+          <div>
+             
+              <p><b>{{ product.product.title }}</b> |  ₹ {{ product.product.price * product.quantity }}</p>
+              <p>quantity: {{product.quantity}}</p>
+              
+            </div>
+
+        </div>
+
+        <hr>
+
+        
+        <p><b>Total Amount : {{totalAmount}}</b></p>
+        <button>Checkout</button>
+    </div>
+      <ng-template #emptyCart>
+        <p>Your cart is empty.</p>
+      </ng-template>
+</div>
+
+  

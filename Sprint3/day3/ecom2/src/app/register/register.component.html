@@ -1,0 +1,34 @@
+<!-- register.component.html -->
+<form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" [(ngModel)]="username" required minlength="4">
+    <div *ngIf="registerForm.controls['username'].errors?.['required'] && (registerForm.controls['username'].dirty || registerForm.controls['username'].touched)">Username is required.</div>
+    <div *ngIf="registerForm.controls['username'].errors?.['minlength'] && (registerForm.controls['username'].dirty || registerForm.controls['username'].touched)">Username must be at least 4 characters long.</div>
+  
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" [(ngModel)]="email" required email>
+    <div *ngIf="registerForm.controls['email'].errors?.['required'] && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)">Email is required.</div>
+    <div *ngIf="registerForm.controls['email'].errors?.['email'] && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)">Please enter a valid email address.</div>
+  
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" [(ngModel)]="password" required>
+    <div *ngIf="registerForm.controls['password'].errors?.['required'] && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)">Password is required.</div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+  </form>
+  

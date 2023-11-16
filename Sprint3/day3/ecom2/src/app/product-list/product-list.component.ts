@@ -4,6 +4,7 @@ import { Product } from '../products/product.model';
 import { Store } from '@ngrx/store';
 import * as ProductActions from '../products/product.actions';
 import * as ProductSelectors from '../products/product.selectors';
+import { ProductService } from '../product.service';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -13,7 +14,9 @@ export class ProductListComponent implements OnInit {
 
   products$!:Observable<Product[]>
 
-  constructor(private store:Store){}
+  constructor(private store:Store,private productService:ProductService){
+   
+  }
 
   ngOnInit() {
     this.products$ = this.store.select(ProductSelectors.selectProductList);
@@ -21,11 +24,35 @@ export class ProductListComponent implements OnInit {
     
    }
 
-   addToCart(product:Product){
-    this.store.dispatch(ProductActions.addProducttoCart({ product }));
-   
-    
-    // this.router.navigate(['/shopping-cart']);
-   }
+  
+ 
+
+  addToCart(product: Product): void {
+    // Check if the product is already in the cart on the server side
+    this.productService.checkProductInCart(+product.id).subscribe(
+      (isInCart) => {
+        if (isInCart) {
+          alert('Product is already in the cart!');
+        } else {
+          // Product is not in the cart, add it to the cart and dispatch the NgRx action
+          this.productService.addToCart(product).subscribe(
+            (cartItem) => {
+              // Dispatch the NgRx action to update the store
+              this.store.dispatch(ProductActions.addProductToCartSuccess({ cartItem }));
+              alert("Product added to cart")
+            },
+            (error) => {
+              console.error('Error adding product to cart', error);
+              // Handle error if needed
+            }
+          );
+        }
+      },
+      (error) => {
+        console.error('Error checking if product is in cart', error);
+        // Handle error if needed
+      }
+    );
+  }
 
 }

@@ -1,0 +1,15 @@
+<nav>
+    <a routerLink="/">Home</a>
+    <a routerLink="/cart">Cart</a>
+  
+    <ng-container *ngIf="!(authState$ | async)?.isAuthenticated; else authenticated">
+      <a routerLink="/signup">Signup</a>
+      <a routerLink="/login">Login</a>
+    </ng-container>
+  
+    <ng-template #authenticated>
+      <span>Welcome, {{ (authState$ | async)?.user?.username }}!</span>
+      <button>Logout</button>
+    </ng-template>
+  </nav>
+  

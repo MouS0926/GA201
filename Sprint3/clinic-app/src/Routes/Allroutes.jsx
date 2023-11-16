@@ -6,6 +6,7 @@ import Doctordetails from '../Components/Doctordetails'
 import Register from '../Components/Register'
 import Login from '../Components/Login'
 import Bookings from '../Components/Bookings'
+import PrivateRoutes from './PrivateRoutes'
 
 export default function Allroutes() {
   return (
@@ -13,10 +14,23 @@ export default function Allroutes() {
         <Routes>
             <Route path='/' element={<Clinic/> }/>
             <Route path='/doctors/:id' element={<Doctorlist/> }/>
-            <Route path='/doctors-details/:id' element={<Doctordetails/> }/>
+            <Route path='/doctors-details/:id' element={
+              <PrivateRoutes>
+                <Doctordetails/>
+              </PrivateRoutes>
+           
+            
+            }/>
             <Route path='/signup' element={<Register/> } />
             <Route path='/login' element={<Login/> } />
-            <Route path='/bookings' element={<Bookings/> }/>
+            <Route path='/bookings' element={
+              <PrivateRoutes>
+
+                  <Bookings/> 
+              </PrivateRoutes>
+           
+            
+            }/>
         </Routes>
 
     </div>

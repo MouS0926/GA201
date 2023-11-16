@@ -1,4 +1,4 @@
-import { LOGIN_FAIL, LOGIN_REQ, LOGIN_SUCCEESS } from "../actionType"
+import { LOGIN_FAIL, LOGIN_REQ, LOGIN_SUCCEESS, LOGOUT } from "../actionType"
 
 let inititalstate={
     isAuth:false,
@@ -23,6 +23,11 @@ switch(type){
     case LOGIN_SUCCEESS:{
         return {
             ...state,isLoading:false,isAuth:true,currentuser:payload
+        }
+    }
+    case LOGOUT:{
+        return {
+            ...state,isAuth:false
         }
     }
     default:{
