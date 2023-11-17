@@ -98,7 +98,7 @@ export default function Todos() {
       ) : (
         <ul>
           {data.map((el) => (
-            <li key={el.id} className="list-item">
+            <li key={el.id} className={`list-item ${selectedItems.includes(el.id) ? 'selected' : ''}`}>
               <p>{el.id}</p>
               <input
                 type="checkbox"

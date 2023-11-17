@@ -47,3 +47,6 @@
     background: rgb(207, 58, 160);
     
   }
+  .selected {
+    background: rgb(229, 159, 116);
+  }

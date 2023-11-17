@@ -1,0 +1,15 @@
+.navbar{
+    background:#e68181;
+    padding: 10px;
+    color: #fff
+  }
+  .navList {
+    list-style: none;
+    display: flex;
+    justify-content:space-around;
+    padding: 0;
+  }
+  .navItem {
+    margin: 0,
+  }
+  

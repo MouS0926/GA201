@@ -11,6 +11,7 @@ export default function Navbar() {
 
 const handleLogout=()=>{
   dispatch({type:LOGOUT})
+  
 }
 
   return (

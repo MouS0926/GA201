@@ -407,6 +407,15 @@
       "status": false,
       "patientId": 2,
       "id": 4
+    },
+    {
+      "time": "11:20",
+      "day": "Friday",
+      "doctorId": "6",
+      "patientName": "anindita",
+      "status": false,
+      "patientId": 4,
+      "id": 5
     }
   ],
   "users": [
@@ -427,6 +436,12 @@
       "email": "reka@mail.com",
       "password": "mou",
       "id": 3
+    },
+    {
+      "name": "anindita",
+      "email": "ani@mail.com",
+      "password": "ani1",
+      "id": 4
     }
   ]
 }
