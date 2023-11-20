@@ -1,0 +1,16 @@
+<p>todo works!</p>
+
+<div>
+    <input [(ngModel)]="newTask" type="text"  placeholder="Enter new Task">
+    <button (click)="addTask()">add</button>
+</div>
+
+<ul>
+
+    <li *ngFor="let task of tasks">
+        <input type="checkbox" name="" id="" [(ngModel)]="task.completed" (change)="updateTask(task)">
+   
+   
+    </li>
+
+</ul>
