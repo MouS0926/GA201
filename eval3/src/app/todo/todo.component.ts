@@ -43,16 +43,11 @@ deleteTask(id:string):void{
 
 
 
-filterTask():Task[]{
-
-  if(this.filter=="all")
-  {
-    this.tasks=this.todoService.getTask()
-    return this.tasks
+getFilteredTasks(): Task[] {
+  if (this.filter === 'all') {
+    return this.tasks;
+  } else {
+    return this.tasks.filter((task) => (this.filter === 'pending' ? !task.completed : task.completed));
   }
-  else{
-    return this.tasks.filter((el)=>(this.filter=="pending"?!task.completed))
-  }
-
 }
 }
