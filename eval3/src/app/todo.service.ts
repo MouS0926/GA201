@@ -19,6 +19,7 @@ export class TodoService {
 }
 
   getTask():Task[]{
+    this.tasks=this.getTaskfromLS()
     return this.tasks
 
   }
