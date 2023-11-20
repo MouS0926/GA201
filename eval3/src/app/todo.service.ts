@@ -6,6 +6,7 @@ import {Task} from "./task.model"
 export class TodoService {
 
   private tasks:Task[]=[]
+ 
   constructor() { }
 
 
@@ -43,5 +44,9 @@ deleteTask(id:string):void{
   this.tasks=this.tasks.filter((el)=>el.id!=id)
   this.setTaskinLS()
 }
+
+
+
+
 
 }

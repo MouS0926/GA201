@@ -10,7 +10,7 @@ import { Task } from '../task.model';
 export class TodoComponent implements OnInit {
 tasks:Task[]=[]
 newTask:string=""
-
+filter:'all'|'pending'|'completed'='all'
 constructor(private todoService:TodoService){}
 
 ngOnInit(): void {
@@ -39,4 +39,20 @@ deleteTask(id:string):void{
   this.todoService.deleteTask(id)
 }
 
+
+
+
+
+filterTask():Task[]{
+
+  if(this.filter=="all")
+  {
+    this.tasks=this.todoService.getTask()
+    return this.tasks
+  }
+  else{
+    return this.tasks.filter((el)=>(this.filter=="pending"?!task.completed))
+  }
+
+}
 }
