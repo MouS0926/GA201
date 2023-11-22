@@ -1,0 +1,15 @@
+<!-- product-comments.component.html -->
+
+<div>
+    <textarea [(ngModel)]="commentText" placeholder="Add a comment"></textarea>
+    <button (click)="addComment()">Add Comment</button>
+  </div>
+  
+  <div>
+    <button (click)="viewComments()">View Comments</button>
+    <ul>
+      <!-- Display comments here -->
+      <li *ngFor="let comment of comments$ | async">{{ comment }}</li>
+    </ul>
+  </div>
+  

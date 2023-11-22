@@ -43,21 +43,6 @@ export class ProductService {
 
 
 
-
-//   updateCartItemQuantity(cartItem: {
-//     productId: number;
-//     quantity: number;
-//     product: Product;
-//   }): Observable<{ productId: number; quantity: number; product: Product }> {
-//     return this.http.put<{ productId: number; quantity: number; product: Product }>(
-//       `${this.cartUrl}/${cartItem.productId}`,
-//       cartItem
-//     );
-//   }
-
-// }
-
-
 updateCartItemQuantity(cartItem: {
   id: number;
   quantity: number;
@@ -68,5 +53,12 @@ updateCartItemQuantity(cartItem: {
     cartItem
   );
 }
+
+getProductById(productId: number): Observable<Product> {
+  const url = `${this.apiUrl}/${productId}`;
+  return this.http.get<Product>(url);
+}
+
+
 
 }

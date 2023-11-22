@@ -1,0 +1,9 @@
+<div *ngIf="product">
+    <img class="p-8 rounded-t-lg" src="{{product.image}}" alt="product image" width="200px"/>
+    <h2>{{ product.title }}</h2>
+    <p>{{ product.details }}</p>
+    <p>Price: ${{ product.price }}</p>
+    <p><a [routerLink]="['/product', product.id, 'comments']">View Comments</a></p>
+    <!-- Add any other product details you want to display -->
+    
+  </div>

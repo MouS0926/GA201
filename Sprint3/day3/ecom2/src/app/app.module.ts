@@ -16,6 +16,8 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { authReducer } from './auth/auth.reducer';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ProductdDetailsComponent } from './productd-details/productd-details.component';
+import { CommentsModule } from './comments/comments.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     CartListComponent,
     RegisterComponent,
     LoginComponent,
-    NavbarComponent
+    NavbarComponent,
+    ProductdDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     StoreModule.forRoot({products: productReducer ,auth: authReducer}),
     EffectsModule.forRoot([ProductEffects,AuthEffects]),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CommentsModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

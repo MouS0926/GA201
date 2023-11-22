@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import * as ProductActions from '../products/product.actions';
 import * as ProductSelectors from '../products/product.selectors';
 import { ProductService } from '../product.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -14,7 +15,7 @@ export class ProductListComponent implements OnInit {
 
   products$!:Observable<Product[]>
 
-  constructor(private store:Store,private productService:ProductService){
+  constructor(private store:Store,private productService:ProductService,private router:Router){
    
   }
 
@@ -53,6 +54,11 @@ export class ProductListComponent implements OnInit {
         // Handle error if needed
       }
     );
+  }
+
+
+  navigateToProductDetail(productId: number): void {
+    this.router.navigate(['/product', productId]);
   }
 
 }

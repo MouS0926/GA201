@@ -1,0 +1,30 @@
+/* SwipeableCards.css */
+.swipeable-cards {
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 10px;
+    background-color: #f8c0c0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+   
+    text-align: center;
+  }
+  
+  .progress {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  .restart-button {
+    margin-top: 20px;
+  }
+  
